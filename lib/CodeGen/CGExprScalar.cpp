@@ -3022,8 +3022,6 @@ Value *ScalarExprEmitter::VisitBinAssign(const BinaryOperator *E) {
     break;
 
   case Qualifiers::OCL_None:
-<<<<<<< HEAD
-  case Qualifiers::OCL_ExplicitNone:
 #if INTEL_SPECIFIC_CILKPLUS
     // Cilk Plus needs the LHS evaluated first to handle cases such as
     // array[f()] = _Cilk_spawn foo();
@@ -3039,8 +3037,6 @@ Value *ScalarExprEmitter::VisitBinAssign(const BinaryOperator *E) {
       LHS = EmitCheckedLValue(E->getLHS(), CodeGenFunction::TCK_Store);
     }
 #else
-=======
->>>>>>> master
     // __block variables need to have the rhs evaluated first, plus
     // this should improve codegen just a little.
     RHS = Visit(E->getRHS());
