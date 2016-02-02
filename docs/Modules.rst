@@ -2,10 +2,6 @@
 Modules
 =======
 
-.. warning::
-   The functionality described on this page is supported for C and
-   Objective-C. C++ support is experimental.
-
 .. contents::
    :local:
 

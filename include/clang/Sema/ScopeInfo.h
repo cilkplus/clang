@@ -1120,4 +1120,3 @@ CapturingScopeInfo::addThisCapture(bool isNested, SourceLocation Loc,
 } // end namespace clang
 
 #endif
-
