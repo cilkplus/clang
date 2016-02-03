@@ -1165,7 +1165,10 @@ static Address LookupStackFrame(CodeGenFunction &CGF) {
 
 /// \brief Create the __cilkrts_stack_frame for the spawning function.
 static Address CreateStackFrame(CodeGenFunction &CGF) {
-  assert(!LookupStackFrame(CGF).isValid() && "already created the stack frame");
+//  assert(!LookupStackFrame(CGF).isValid() && "already created the stack frame");
+  Address A = LookupStackFrame(CGF);
+  if (A.isValid())
+    return A;
 
   llvm::Type *SFTy = GetCilkStackFrame(CGF);
   llvm::AllocaInst *SF = CGF.CreateTempAlloca(SFTy);

@@ -1,6 +1,4 @@
 // RUN: %clang_cc1 -S -O3 -fno-builtin -o - %s | FileCheck %s
-<<<<<<< HEAD
-=======
 // RUN: %clang_cc1 -S -O3 -fno-builtin-ceil -fno-builtin-copysign -fno-builtin-cos \
 // RUN:  -fno-builtin-fabs -fno-builtin-floor -fno-builtin-strcat -fno-builtin-strncat \
 // RUN:  -fno-builtin-strchr -fno-builtin-strrchr -fno-builtin-strcmp -fno-builtin-strncmp \
@@ -8,7 +6,6 @@
 // RUN:  -fno-builtin-strpbrk -fno-builtin-strspn -fno-builtin-strtod -fno-builtin-strtof \
 // RUN:  -fno-builtin-strtold -fno-builtin-strtol -fno-builtin-strtoll -fno-builtin-strtoul \
 // RUN:  -fno-builtin-strtoull -o - %s | FileCheck %s
->>>>>>> master
 // rdar://10551066
 
 typedef __SIZE_TYPE__ size_t;
