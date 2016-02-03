@@ -974,6 +974,8 @@ def note_property_synthesize : Note<
   "property synthesized here">;
 def error_synthesize_category_decl : Error<
   "@synthesize not allowed in a category's implementation">;
+def error_synthesize_on_class_property : Error<
+  "@synthesize not allowed on a class property %0">;
 def error_reference_property : Error<
   "property of reference type is not supported">;
 def error_missing_property_interface : Error<
@@ -2074,6 +2076,10 @@ def err_concept_decl_invalid_specifiers : Error<
   "'%select{thread_local|inline|friend|constexpr}1'">;
 def err_function_concept_with_params : Error<
   "function concept cannot have any parameters">;
+def err_function_concept_bool_ret : Error<
+  "declared return type of function concept must be 'bool'">;
+def err_variable_concept_bool_decl : Error<
+  "declared type of variable concept must be 'bool'">;
 
 // C++11 char16_t/char32_t
 def warn_cxx98_compat_unicode_type : Warning<
@@ -2442,7 +2448,7 @@ def warn_attribute_wrong_decl_type : Warning<
   "variables, functions and classes|Objective-C protocols|"
   "functions and global variables|structs, unions, and typedefs|structs and typedefs|"
   "interface or protocol declarations|kernel functions|non-K&R-style functions|"
-  "variables, fields and typedefs}1">,
+  "variables, enums, fields and typedefs}1">,
   InGroup<IgnoredAttributes>;
 def err_attribute_wrong_decl_type : Error<warn_attribute_wrong_decl_type.Text>;
 def warn_type_attribute_wrong_type : Warning<
@@ -2852,6 +2858,8 @@ def warn_vector_mode_deprecated : Warning<
   InGroup<DeprecatedAttributes>;
 def err_complex_mode_vector_type : Error<
   "type of machine mode does not support base vector types">;
+def err_enum_mode_vector_type : Error<
+  "mode %0 is not supported for enumeration types">;
 def warn_attribute_nonnull_no_pointers : Warning<
   "'nonnull' attribute applied to function with no pointer arguments">,
   InGroup<IgnoredAttributes>;
@@ -6428,6 +6436,11 @@ def err_variadic_device_fn : Error<
 def err_va_arg_in_device : Error<
   "CUDA device code does not support va_arg">;
 def err_alias_not_supported_on_nvptx : Error<"CUDA does not support aliases">;
+def err_dynamic_var_init : Error<
+    "dynamic initialization is not supported for "
+    "__device__, __constant__, and __shared__ variables.">;
+def err_shared_var_init : Error<
+    "initialization is not supported for __shared__ variables.">;
 
 def warn_non_pod_vararg_with_format_string : Warning<
   "cannot pass %select{non-POD|non-trivial}0 object of type %1 to variadic "
