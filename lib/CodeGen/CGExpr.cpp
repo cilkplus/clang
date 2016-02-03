@@ -17,7 +17,6 @@
 #if INTEL_SPECIFIC_CILKPLUS
 #include "clang/Basic/intel/DeclIntel.h"
 #include "clang/Basic/intel/ExprIntel.h"
-//#include "clang/Basic/intel/StmtIntel.h"
 #include "intel/CGCilkPlusRuntime.h"
 #endif // INTEL_SPECIFIC_CILKPLUS
 #include "CGDebugInfo.h"

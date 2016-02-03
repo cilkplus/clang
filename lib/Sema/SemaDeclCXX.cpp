@@ -1133,12 +1133,8 @@ CheckConstexprFunctionStmt(Sema &SemaRef, const FunctionDecl *Dcl, Stmt *S,
       Cxx1yLoc = S->getLocStart();
     return true;
   }
-//AVT: sometimes we have bad diagostic here
-  if (!Cxx1yLoc.isValid())
-    Cxx1yLoc = S->getLocStart();
-  if (!Cxx1yLoc.isValid())
-    Cxx1yLoc = Dcl->getLocStart();
-  SemaRef.Diag(Cxx1yLoc, diag::err_constexpr_body_invalid_stmt) 
+
+  SemaRef.Diag(S->getLocStart(), diag::err_constexpr_body_invalid_stmt)
     << isa<CXXConstructorDecl>(Dcl);
   return false;
 }
