@@ -1,5 +1,4 @@
 // RUN: %clang_cc1 -fsyntax-only -verify %s
-// expected-no-diagnostics
 
 @interface Root
 -(id) alloc;
@@ -16,12 +15,14 @@
 @property(readonly) int ro, ro2;
 @property (class) int c;
 @property (class) int c2;
+@property (class) int x;
 @end
 
 @implementation A
-@dynamic x;
-@synthesize z;
-@dynamic c;
+@dynamic x; // refers to the instance property
+@dynamic (class) x; // refers to the class property
+@synthesize z, c2; // expected-error {{@synthesize not allowed on a class property 'c2'}}
+@dynamic c; // refers to the class property
 @end
 
 int test() {

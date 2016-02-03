@@ -1739,7 +1739,7 @@ void ASTStmtWriter::VisitOpaqueValueExpr(OpaqueValueExpr *E) {
 void ASTStmtWriter::VisitTypoExpr(TypoExpr *E) {
   VisitExpr(E);
   // TODO: Figure out sane writer behavior for a TypoExpr, if necessary
-  assert(false && "Cannot write TypoExpr nodes");
+  llvm_unreachable("Cannot write TypoExpr nodes");
 }
 
 //===----------------------------------------------------------------------===//

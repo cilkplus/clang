@@ -6444,6 +6444,9 @@ static Decl *getPredefinedDecl(ASTContext &Context, PredefinedDeclIDs ID) {
 
   case PREDEF_DECL_MAKE_INTEGER_SEQ_ID:
     return Context.getMakeIntegerSeqDecl();
+
+  case PREDEF_DECL_CF_CONSTANT_STRING_ID:
+    return Context.getCFConstantStringDecl();
   }
   llvm_unreachable("PredefinedDeclIDs unknown enum value");
 }
@@ -6883,7 +6886,7 @@ dumpModuleIDMap(StringRef Name,
   }
 }
 
-void ASTReader::dump() {
+LLVM_DUMP_METHOD void ASTReader::dump() {
   llvm::errs() << "*** PCH/ModuleFile Remappings:\n";
   dumpModuleIDMap("Global bit offset map", GlobalBitOffsetsMap);
   dumpModuleIDMap("Global source location entry map", GlobalSLocEntryMap);
